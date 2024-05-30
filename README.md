@@ -15,7 +15,7 @@
 <img src="https://img.shields.io/badge/flask-3.0.2-green" alt="flask-version" />
 </p>
 
-<img src="logo.png">
+<img src="https://github.com/JKerbin/Zhiyin-Butler-Opensource/blob/main/logo.png">
 
 ## 说明
 
