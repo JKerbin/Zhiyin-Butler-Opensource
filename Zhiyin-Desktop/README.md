@@ -16,7 +16,7 @@
 
 ### 安装内核
 
-- 打包[智音Butler客户端内核源码](https://gitee.com/Jkerbin/zhiyin-butler-opensource/tree/master/Zhiyin-Client)
+- 打包[智音Butler客户端内核源码](https://github.com/JKerbin/Zhiyin-Butler-Opensource/tree/main/Zhiyin-Client)
 ```bash
 $ pyinstaller -F client_boot.py
 $ pyinstaller -F client_activation.py
