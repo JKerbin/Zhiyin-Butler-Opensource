@@ -2,8 +2,6 @@
 
 <p align="center">基于Electron + python开发的Windows桌面应用（客户端 + 服务端）</p>
 
-<img src="logo.png">
-
 <p align="center">
 <img src="https://img.shields.io/badge/electron-28.2.0-blue" alt="electron-version">
 <img src="https://img.shields.io/badge/electron vite-2.0.0-blue" alt="electron-vite-version" />
@@ -16,6 +14,8 @@
 <img src="https://img.shields.io/badge/mysql-8.3.0-green" alt="mysql-version" />
 <img src="https://img.shields.io/badge/flask-3.0.2-green" alt="flask-version" />
 </p>
+
+<img src="logo.png">
 
 ## 说明
 
