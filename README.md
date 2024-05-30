@@ -29,6 +29,7 @@
 - 开启软件
 
 播放演示视频请解除静音：
+
 [视频演示](https://github.com/JKerbin/Zhiyin-Butler-Opensource/assets/81380030/6eed4278-6c21-4060-b1fd-a09f1f160d6a)
 
 更多功能正在开发中……
