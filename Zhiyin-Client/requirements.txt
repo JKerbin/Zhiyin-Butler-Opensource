@@ -1,0 +1,7 @@
+# python==3.12.3
+pyaudio==0.2.14
+python-dotenv==1.0.1
+numpy==1.26.4
+requests==2.31.0
+flask==3.0.2
+psutil==5.9.8

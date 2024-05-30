@@ -1,0 +1,137 @@
+#userboard {
+    position: absolute;
+    margin-left: 55px;
+    width: 370px;
+    height: 480px;
+    box-shadow: 30px 0 30px -30px #9d9d9d;
+    /* opacity: 0.9; */
+    overflow: hidden;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+}
+
+#userboard>.shape {
+    position: absolute;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#userboard>#shape1 {
+    top: 60%;
+    left: 10%;
+    width: 130px;
+    height: 130px;
+    background-image: linear-gradient(145deg, #e81cff, #7153e1, #40c9ff);
+    opacity: 0.3;
+}
+
+#userboard>#shape2 {
+    top: 57%;
+    left: 72.5%;
+    width: 50px;
+    height: 50px;
+    background: #40c9ff;
+    opacity: 0.3;
+}
+
+#userboard>#shape3 {
+    top: 22.5%;
+    left: 78.5%;
+    width: 200px;
+    height: 200px;
+    background: #e0e0e0;
+    opacity: 0.4;
+}
+
+#userboard>#shape4 {
+    top: 79.5%;
+    left: 51%;
+    width: 200px;
+    height: 200px;
+    background: #e0e0e0;
+    opacity: 0.4;
+}
+
+#userboard>#title {
+    position: absolute;
+    top: 23%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.12);
+}
+
+.input-group {
+    -webkit-app-region: no-drag;
+    position: absolute;
+    top: 62%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.input {
+    width: 260px;
+    height: 160px;
+    border: solid 1.5px #a0a0a0;
+    border-radius: 50px 0 50px 0;
+    background: #e0e0e050;
+    font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+    font-size: 17px;
+    color: #a0a0a0;
+    transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.user-label {
+    position: absolute;
+    left: 30px;
+    color: #a0a0a0;
+    pointer-events: none;
+    font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+    font-size: 15px;
+    transform: translateY(15px);
+    transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input:focus,
+input:valid {
+    outline: none;
+    border: 1.5px solid #7153e1;
+    color: #7153e1;
+}
+
+.input:focus~label,
+input:valid~label {
+    transform: translateY(-100%) scale(0.9);
+    padding: 0 .2em;
+    color: #7153e1;
+}
+
+#submit {
+    font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+    font-size: 17px;
+    height: 55px;
+    width: 150px;
+    border-radius: 0 50px 0 50px;
+    border: 1.5px solid #7153e1;
+    background-color: #ffffff;
+    color: #a0a0a0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#submit:hover {
+    border: none;
+    background: linear-gradient(90deg, #40c9ff, #7153e1, #e81cff);
+    color: #ffffff;
+}
+
+#submit:active {
+    transform: scale(0.8);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 0.9;
+    }
+}

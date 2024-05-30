@@ -1,0 +1,99 @@
+.container {
+    height: 48px;
+    width: 144px;
+    border-radius: 24px 0px 24px 0px;
+    box-shadow:  2px 2px 6px #666666;
+    overflow: hidden;
+
+    --s: 360px;
+    /* control the size */
+    --c1: #fafafa;
+    --c2: #fafafa;
+    --c3: #ececec;
+
+    background: repeating-conic-gradient(from 30deg,
+            #0000 0 120deg,
+            var(--c3) 0 180deg) calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+        repeating-conic-gradient(from 30deg,
+            var(--c1) 0 60deg,
+            var(--c2) 0 120deg,
+            var(--c3) 0 180deg);
+    background-size: var(--s) calc(var(--s) * 0.577);
+}
+
+.checkbox {
+    top: 32.5%;
+    left: 18%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    -webkit-app-region: no-drag;
+    display: inline-block;
+    position: absolute;
+    cursor: pointer;
+}
+
+.checkbox__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.checkbox__label {
+    padding: 5px;
+    display: inline-block;
+    padding-left: 30px;
+    margin-bottom: 10px;
+    position: relative;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.checkbox__custom {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(#f0f0f0, #e0e0e0) padding-box,
+        linear-gradient(145deg, #e81cff, #40c9ff) border-box;
+    border: 2px solid transparent;
+    border-radius: 16px 0 0 0;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.checkbox__input:checked+.checkbox__label .checkbox__custom {
+    background-image: linear-gradient(145deg, #e81cff, #40c9ff);
+    transform: rotate(45deg) scale(0.8);
+    border-radius: 0;
+}
+
+.checkbox__label:hover .checkbox__custom {
+    transform: scale(1.2);
+}
+
+.close {
+    -webkit-app-region: no-drag;
+    position: absolute;
+    top: 32%;
+    left: 74%;
+    background: none;
+    border: none;
+    transform: translate(-50%, -50%);
+    color: #a0a0a0;
+    font-size: 17px;
+}
+
+.close:hover {
+    color: #e81cff;
+}
+
+#title {
+    position: absolute;
+    top: 32%;
+    left: 46%;
+    transform: translate(-50%, -50%) scale(0.03);
+}

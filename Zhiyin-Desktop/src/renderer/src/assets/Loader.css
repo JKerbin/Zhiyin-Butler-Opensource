@@ -1,0 +1,80 @@
+.container {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  opacity: 0.7;
+}
+
+.container>span {
+  position: absolute;
+  margin-top: 110%;
+  font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+  font-size: 15px;
+}
+
+.item {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+
+.item-1 {
+  background-image: linear-gradient(145deg, #e81cff, #7153e1, #40c9ff);
+  top: 0;
+  left: 0;
+  z-index: 1;
+  animation: item-1_move 1.8s cubic-bezier(.6, .01, .4, 1) infinite;
+}
+
+.item-2 {
+  background: #40c9ff;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  animation: item-2_move 1.8s cubic-bezier(.6, .01, .4, 1) infinite;
+}
+
+@keyframes item-1_move {
+
+  0%,
+  100% {
+    transform: translate(0, 0)
+  }
+
+  25% {
+    transform: translate(0, 50px)
+  }
+
+  50% {
+    transform: translate(50px, 50px)
+  }
+
+  75% {
+    transform: translate(50px, 0)
+  }
+}
+
+@keyframes item-2_move {
+
+  0%,
+  100% {
+    transform: translate(0, 0)
+  }
+
+  25% {
+    transform: translate(0, -50px)
+  }
+
+  50% {
+    transform: translate(-50px, -50px)
+  }
+
+  75% {
+    transform: translate(-50px, 0)
+  }
+}

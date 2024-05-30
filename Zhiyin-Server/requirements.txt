@@ -1,0 +1,9 @@
+# python==3.12.3
+flask==3.0.2
+openai==1.29.0
+python-dotenv==1.0.1
+munpy==1.26.4
+pymysql==1.1.0
+cryptography==42.0.7
+gevent==24.2.1
+requests==2.31.0

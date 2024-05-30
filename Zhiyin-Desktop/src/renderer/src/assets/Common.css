@@ -1,0 +1,173 @@
+.window {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+}
+
+.close {
+    -webkit-app-region: no-drag;
+    position: absolute;
+    transform: translate(-100%, 0);
+    left: 100%;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    color: #a0a0a0;
+    border: 0;
+    border-radius: 0 0 0 50%;
+    cursor: pointer;
+    position: relative;
+    background-color: transparent;
+    text-decoration: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.close:hover {
+    color: #ffffff;
+}
+
+.close::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(145deg, #e81cff, #7153e1, #40c9ff);
+    transform: translateY(-100%);
+    transition: all 0.3s;
+    z-index: -1;
+    opacity: 0.8;
+}
+
+.close:hover::before {
+    transform: translateY(0);
+}
+
+.card {
+    position: absolute;
+    background: #fafafa;
+}
+
+#background {
+    width: 800px;
+    height: 480px;
+    border-radius: 30% 0 30% 0;
+    overflow: hidden;
+
+    --s: 250px;
+    /* control the size */
+    --c1: #f0f0f0;
+    --c2: #e0e0e0;
+    --c3: #fafafa;
+
+    background: repeating-conic-gradient(from 30deg,
+            #0000 0 120deg,
+            var(--c3) 0 180deg) calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+        repeating-conic-gradient(from 30deg,
+            var(--c1) 0 60deg,
+            var(--c2) 0 120deg,
+            var(--c3) 0 180deg);
+    background-size: var(--s) calc(var(--s) * 0.577);
+}
+
+#background>.shape {
+    position: absolute;
+    animation: fadeIn 1s forwards;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+}
+
+#background>#shape1 {
+    top: 60%;
+    left: 60%;
+    width: 230px;
+    height: 230px;
+    background-image: linear-gradient(145deg, #e81cff, #7153e1, #40c9ff);
+}
+
+#background>#shape2 {
+    top: 15%;
+    left: 45%;
+    width: 230px;
+    height: 230px;
+    background: #40c9ff;
+    animation-delay: 0.4s;
+}
+
+#background>#shape3 {
+    top: 25%;
+    left: 78.5%;
+    width: 200px;
+    height: 200px;
+    background: #e0e0e0;
+    animation-delay: 0.2s;
+}
+
+#background>#shape4 {
+    top: 91%;
+    left: 81%;
+    width: 200px;
+    height: 200px;
+    background: #e0e0e0;
+    animation-delay: 0.8s;
+}
+
+@keyframes fadeIn {
+    to {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+}
+
+#background>.triangle {
+    position: absolute;
+    width: 150%;
+    height: 250px;
+    overflow: hidden;
+    opacity: 0.5;
+}
+
+#background>#triangle1 {
+    top: 0;
+    left: 0;
+}
+
+#background>#triangle2 {
+    top: 0;
+    left: -150px;
+}
+
+#background>#triangle3 {
+    bottom: 0;
+    left: -400px;
+    transform: rotate(180deg);
+}
+
+#background>#triangle4 {
+    bottom: 0;
+    left: -300px;
+    transform: rotate(180deg);
+}
+
+#userpad {
+    position: absolute;
+    margin-right: 300px;
+    width: 390px;
+    height: 550px;
+    border-radius: 20px 10px 10px 20px;
+    box-shadow: inset 5px -30px 30px -30px #9d9d9d;
+    opacity: 0.9;
+}
+
+#userpad>#shadow {
+    position: absolute;
+    margin-left: 370px;
+    margin-top: 1px;
+    width: 20px;
+    height: 548px;
+    border-radius: 10px;
+    box-shadow: inset 5px 0 30px #9d9d9d;
+}
