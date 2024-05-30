@@ -39,9 +39,9 @@
 智音Butler服务器使用flask框架搭建，调用ChatGPT-3.5-turbo和Baidu-tts-asr服务实现功能
 
 了解项目开源代码，请查看
-- [智音Butler客户端桌面源代码](https://gitee.com/Jkerbin/zhiyin-butler-opensource/tree/master/Zhiyin-Desktop)
-- [智音Butler客户端内核源代码](https://gitee.com/Jkerbin/zhiyin-butler-opensource/tree/master/Zhiyin-Client)
-- [智音Butler远程服务端源代码](https://gitee.com/Jkerbin/zhiyin-butler-opensource/tree/master/Zhiyin-Server)
+- [智音Butler客户端桌面源代码](https://github.com/JKerbin/Zhiyin-Butler-Opensource/tree/main/Zhiyin-Desktop)
+- [智音Butler客户端内核源代码](https://github.com/JKerbin/Zhiyin-Butler-Opensource/tree/main/Zhiyin-Client)
+- [智音Butler远程服务端源代码](https://github.com/JKerbin/Zhiyin-Butler-Opensource/tree/main/Zhiyin-Server)
 
 ### 推荐的集成开发环境
 
