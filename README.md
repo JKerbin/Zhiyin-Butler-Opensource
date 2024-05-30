@@ -21,7 +21,7 @@
 
 智音语音助手（Zhiyin_Butler）旨在开发一款通用型智能电脑管家。与市面上常见的集成化语音助手（如小米的“小爱同学”或微软的“Copilot”）相比，智音语音助手不依赖特定硬件，支持在所有Windows 10/11系统上安装和部署。
 
-项目的所有内容遵循[Apache License 2.0开源协议](https://gitee.com/Jkerbin/zhiyin-butler-opensource/blob/master/LICENSE)，作为通用型电脑管家系统示例供开发者参考学习。
+项目的所有内容遵循[Apache License 2.0开源协议](https://github.com/JKerbin/Zhiyin-Butler-Opensource/blob/main/LICENSE)，作为通用型电脑管家系统示例供开发者参考学习。
 
 目前公开的源码为测试版beta0.1.0，主要功能包括：
 
