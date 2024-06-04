@@ -1,6 +1,6 @@
 {
   "name": "Zhiyin",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "An Electron application with Vue and TypeScript",
   "main": "./out/main/index.js",
   "author": "example.com",
@@ -67,6 +67,10 @@
       {
         "from": "programs",
         "to": "programs"
+      },
+      {
+        "from": "config.env",
+        "to": "config.env"
       }
     ],
     "win": {

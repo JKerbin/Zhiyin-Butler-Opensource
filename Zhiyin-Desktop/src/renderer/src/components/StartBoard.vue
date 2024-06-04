@@ -7,7 +7,7 @@
         <div id="letsbegin">
             <button id="begin" @click="begin">即刻体验</button>
         </div>
-        <span id="version">version-beta-0.1.0<br>developed by Jason JKerbin</span>
+        <span id="version">version-beta-0.1.2<br>developed by Jason JKerbin</span>
     </div>
 </template>
 

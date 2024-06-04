@@ -6,6 +6,8 @@ from database import Database
 from ts import TextAndSound
 from utils import *
 
+version = '0.1.2'  # 当前版本
+
 ai = Brain()  # 主语音ai助手
 aai = TextAndSound()  # auxiliary_ai语音识别助手
 conf = Config()
@@ -77,6 +79,6 @@ def activation_api():
 if __name__ == '__main__':
     service_port = int(conf.config('SERVICE_PORT'))
     mas = Massage('SERVER')
-    mas.info(f'在{service_port}端口上运行服务')
+    mas.info(f'服务器版本{version}，在{service_port}端口上运行服务')
     server = pywsgi.WSGIServer(('0.0.0.0', service_port), app)
     server.serve_forever()

@@ -3,6 +3,7 @@ import datetime
 import sys
 import threading
 import time
+from config import config
 from functools import wraps
 from dotenv import load_dotenv
 
@@ -20,16 +21,31 @@ class Config:
         :param env: 环境变量名
         :return: 环境变量值
         """
-        # TODO: 从config.env中获取环境变量(开源版)
         if not os.path.exists(self.env_path):
             self.sig.envmissing()
             return ''
         try:
             load_dotenv(dotenv_path=self.env_path, verbose=True)
-            return os.getenv(env)
+            dev = os.getenv('DEV')
         except Exception as e:
             self.mas.error(e)
             return ''
+
+        if dev == 'dev':
+            # TODO: 从config.env中获取环境变量(开源版)
+            try:
+                load_dotenv(dotenv_path=self.env_path, verbose=True)
+                return os.getenv(env)
+            except Exception as e:
+                self.mas.error(e)
+                return ''
+        elif dev == 'release':
+            # TODO: 从config.py中获取环境变量(发行版)
+            try:
+                return config[env]
+            except Exception as e:
+                self.mas.error(e)
+                return ''
 
 
 class Sig:
