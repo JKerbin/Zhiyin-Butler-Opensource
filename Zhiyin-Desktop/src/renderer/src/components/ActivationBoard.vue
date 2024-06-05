@@ -10,7 +10,7 @@
             <button id="submit" @click="submit" :disabled="isSubmitted">立刻激活</button>
         </div>
     </div>
-    <Loader v-if="isSubmitted"/>
+    <Loader v-if="isSubmitted" />
 </template>
 
 <style scoped>
