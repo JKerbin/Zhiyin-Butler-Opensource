@@ -51,7 +51,7 @@ AUDIO_DIR="audio" # 程序音频信息保存目录，不需要更改
 LOG_PATH="log" # 日志信息保存目录，不需要更改
 SERVER_HOST="http://127.0.0.1" # 服务地址，使用远程服务器是配置成服务器的公网ip
 SERVER_PORT="1228" # 服务端口，默认1228
-SERVER_MOD="normal" # 服务模式（tts模式），mormal使用百度tts接口，hd模式使用openai的tts接口
+SERVER_MOD="normal" # 服务模式（tts模式），mormal使用百度tts接口，hd模式使用openai的tts接口，local模式使用本地tts接口（仅支持Win11系统）
 
 ```
 
