@@ -15,7 +15,7 @@
 <img src="https://img.shields.io/badge/flask-3.0.2-green" alt="flask-version" />
 </p>
 
-<img src="https://github.com/JKerbin/Zhiyin-Butler-Opensource/blob/main/logo.png">
+<img src="logo.png">
 
 ## 说明
 
@@ -23,7 +23,7 @@
 
 项目的所有内容遵循[Apache License 2.0开源协议](https://github.com/JKerbin/Zhiyin-Butler-Opensource/blob/main/LICENSE)，作为通用型电脑管家系统示例供开发者参考学习。
 
-目前公开的源码为测试版beta0.1.0，主要功能包括：
+目前公开的源码为测试版beta0.1.2，主要功能包括：
 
 - 随心聊天
 - 开启软件
@@ -60,3 +60,7 @@
 - 需注意openai相关服务不支持部署在中国大陆的服务器，参考服务器文档部署代理
 - 桌面版源码支持编译为Linux、macOS、Windows对应的安装程序，但是客户端内核目前仅支持Windows版本
 - 部署客户端需要[node.js](https://nodejs.org/en) + [pyinstaller](https://pyinstaller.org/en/stable/)相关依赖
+
+## 更新说明
+version-beta-0.1.2: 客户端配置文件分为开发模式（从config.env中读取配置）和发行模式（从config.py中读取配置），在config.env的DEV选项中进行切换；
+version-beta-0.1.2: 修复了服务端mysql服务超时断开的bug；
