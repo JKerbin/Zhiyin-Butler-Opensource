@@ -11,7 +11,8 @@
 项目根目录/
 ├── README.md
 ├── requirements.txt
-├── config.env                      # 配置文件
+├── config.env                      # 配置文件（用于开发模式）
+├── config.py                       # 配置文件（用于发行模式）
 ├── log                             # 日志文件
 ├── audio/                          # 音频文件
 │   ├── sys/                        # 内置语音
