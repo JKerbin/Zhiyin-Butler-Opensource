@@ -41,6 +41,9 @@ class Database:
         self.__connect_to_db()
 
     def __connect_to_db(self):
+        """
+        连接MySQL数据库
+        """
         try:
             self.__c = 'DATABASE'
             self.mas = Massage(self.__c)
@@ -57,6 +60,9 @@ class Database:
             self.mas.error(e)
 
     def __ping_db(self):
+        """
+        MySQL超时重连
+        """
         try:
             self.__db.ping(reconnect=True)
         except pymysql.MySQLError as e:
@@ -65,6 +71,9 @@ class Database:
 
     @staticmethod
     def __filter_mac_addresses(mac_list):
+        """
+        去除非标准17位（加上连接符）的mac地址（例如虚拟网络适配器mac地址）
+        """
         def is_valid_mac(mac):
             valid_mac_pattern = re.compile(r'^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$')
             return bool(valid_mac_pattern.match(mac))
@@ -72,6 +81,10 @@ class Database:
         return [mac for mac in mac_list if is_valid_mac(mac)]
 
     def add_invitation(self, invitations):
+        """
+        生成新的邀请码
+        :param invitations: 新增邀请码
+        """
         self.__ping_db()
         try:
             for invitation in invitations:
@@ -84,6 +97,10 @@ class Database:
             self.mas.error(e)
 
     def user_verification(self, mac_list):
+        """
+        用户验证
+        :param mac_list: 用户mac地址列表
+        """
         self.__ping_db()
         mac_list = self.__filter_mac_addresses(mac_list)
         try:
@@ -102,6 +119,11 @@ class Database:
             return 'fail'
 
     def user_activation(self, mac_list, invitation):
+        """
+        用户激活
+        :param mac_list: 用户mac地址列表
+        :param invitation: 用户提供的邀请码
+        """
         self.__ping_db()
         mac_list = self.__filter_mac_addresses(mac_list)
         state = self.user_verification(mac_list)
