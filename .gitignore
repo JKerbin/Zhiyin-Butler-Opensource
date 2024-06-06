@@ -1,3 +1,5 @@
 .idea/
+Zhiyin-Client/__pycache__/
+Zhiyin-Server/__pycache__/
 Zhiyin-Desktop/node_modules/
 Zhiyin-Desktop/out/
