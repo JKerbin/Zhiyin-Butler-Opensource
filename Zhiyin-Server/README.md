@@ -37,7 +37,7 @@ POST /api/ai
 - **请求体参数**:
     - `speech` (string): Base64 编码的语音数据
     - `speech_len` (int): 语音数据的长度
-    - `server_mode` (string): 服务器模式，取值为 `normal` 或 `hd`
+    - `server_mode` (string): 服务器模式，取值为 `normal` 或 `hd` 或 `local`
     - `program_list` (list): 程序列表（用于功能模式时）
 
 #### 响应
