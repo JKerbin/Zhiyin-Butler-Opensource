@@ -62,5 +62,5 @@
 - 部署客户端需要[node.js](https://nodejs.org/en) + [pyinstaller](https://pyinstaller.org/en/stable/)相关依赖
 
 ## 更新说明
-- version-beta-0.1.2: 客户端配置文件分为开发模式（从config.env中读取配置）和发行模式（从config.py中读取配置），在config.env的DEV选项中进行切换；
+- version-beta-0.1.2: 客户端新增开发模式（从config.env中读取配置）和发行模式（从config.py中读取配置）；
 - version-beta-0.1.2: 修复了服务端mysql服务超时断开的bug；
