@@ -1,5 +1,9 @@
 .idea/
+Zhiyin-Client/log
 Zhiyin-Client/__pycache__/
+Zhiyin-Client/programs/lnk/
+Zhiyin-Client/programs/plist
+Zhiyin-Server/log
 Zhiyin-Server/__pycache__/
 Zhiyin-Desktop/node_modules/
 Zhiyin-Desktop/out/

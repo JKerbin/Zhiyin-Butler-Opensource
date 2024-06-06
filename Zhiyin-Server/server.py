@@ -36,6 +36,10 @@ def ai_api():
     elif data['server_mode'] == 'hd':
         # 增强语音模式
         output_content, tts_mode = aai.tts_hd(ai_output, proxies)
+    elif data['server_mode'] == 'local':
+        # Win11语音API
+        output_content = ai_output
+        tts_mode = 'tts_local'
     else:
         return {"type": "error"}
     if ai_output == 'activate_func_mode':

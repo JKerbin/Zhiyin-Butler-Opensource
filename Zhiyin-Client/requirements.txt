@@ -5,3 +5,4 @@ numpy==1.26.4
 requests==2.31.0
 flask==3.0.2
 psutil==5.9.8
+comtypes==1.4.3

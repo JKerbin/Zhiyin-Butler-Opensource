@@ -11,7 +11,7 @@ prom = ProgramManager()
 user = Audio()
 mas = Massage(module)
 
-# 服务模式：普通/增强
+# 服务模式：普通/增强/本地
 server_mode = conf.config('SERVER_MOD')
 
 

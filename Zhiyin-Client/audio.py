@@ -3,6 +3,7 @@ import os
 
 import numpy as np
 import pyaudio
+import comtypes.client
 
 from utils import Massage
 
@@ -72,25 +73,33 @@ class Audio:
             self.mas.error(e)
             return 'bad', 0
 
-    def play(self, base64_audio, mode):
+    def play(self, audio_content, mode):
         """
         播放base64编码的音频数据
-        :param base64_audio: 音频数据
+        :param audio_content: 音频数据（服务模式为base64编码，本地模式为文本内容）
         :param mode: 通用模式/增强模式
         """
         try:
-            self.mas.info('模拟base64音频')
-            audio_data = base64.b64decode(base64_audio)
-            audio = pyaudio.PyAudio()
-            # 打开音频流
-            stream = audio.open(format=self.config['FORMAT'],  # 根据实际情况调整
-                                channels=self.config['CHANNELS'],  # 单声道
-                                rate=self.config['RATE_TTS'] if mode == 'tts' else self.config['RATE_TTS_HD'],  # 采样率
-                                output=True)
-            stream.write(audio_data)
-            stream.stop_stream()
-            stream.close()
-            audio.terminate()
+            if mode == 'tts_local':
+                self.mas.info('使用WIN11-TTS-API模拟音频')
+                # 初始化 SAPI.SpVoice 对象
+                sapi = comtypes.client.CreateObject("SAPI.SpVoice")
+                # 将文本转换为语音
+                sapi.Speak(audio_content)
+            else:
+                self.mas.info('模拟base64音频')
+                audio_data = base64.b64decode(audio_content)
+                audio = pyaudio.PyAudio()
+                # 打开音频流
+                stream = audio.open(format=self.config['FORMAT'],  # 根据实际情况调整
+                                    channels=self.config['CHANNELS'],  # 单声道
+                                    rate=self.config['RATE_TTS'] if mode == 'tts' else self.config['RATE_TTS_HD'],
+                                    # 采样率
+                                    output=True)
+                stream.write(audio_data)
+                stream.stop_stream()
+                stream.close()
+                audio.terminate()
             self.mas.info('音频模拟结束')
         except Exception as e:
             self.mas.error(e)
