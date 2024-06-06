@@ -23,7 +23,7 @@
 
 项目的所有内容遵循[Apache License 2.0开源协议](https://github.com/JKerbin/Zhiyin-Butler-Opensource/blob/main/LICENSE)，作为通用型电脑管家系统示例供开发者参考学习。
 
-目前公开的源码为测试版beta0.1.2，主要功能包括：
+目前公开的源码为测试版beta0.1.3，主要功能包括：
 
 - 随心聊天
 - 开启软件
@@ -64,3 +64,4 @@
 ## 更新说明
 - version-beta-0.1.2: 客户端新增开发模式（从config.env中读取配置）和发行模式（从config.py中读取配置）；
 - version-beta-0.1.2: 修复了服务端mysql服务超时断开的bug；
+- version-beta-0.1.3: 添加了使用Win11内置的文字转语音API功能，加快响应速度；
