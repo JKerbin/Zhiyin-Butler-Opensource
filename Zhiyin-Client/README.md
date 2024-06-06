@@ -25,10 +25,6 @@
 │   ├── lnk/
 │   │   └── ...                     # 程序快捷方式
 │   └── plist                       # 程序表
-├── build/
-│   └── reports/
-│       └── tests/
-│           └── testReport.html
 ├── client_boot.py                  # 客户端初始化内核
 ├── client_activation.py            # 客户端激活内核
 ├── client_main.py                  # 客户端主内核
