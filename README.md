@@ -33,7 +33,7 @@
 
 播放演示视频请解除静音：
 
-[视频演示](https://github.com/JKerbin/Zhiyin-Butler-Opensource/assets/81380030/6eed4278-6c21-4060-b1fd-a09f1f160d6a)
+[演示视频](https://github.com/JKerbin/Zhiyin-Butler-Opensource/assets/81380030/84931fa2-0194-4da9-b404-610caf5eac15)
 
 更多功能正在开发中……
 
