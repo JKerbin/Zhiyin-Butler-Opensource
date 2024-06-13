@@ -6,7 +6,7 @@ from utils import *
 
 
 class ProgramManager:
-    def __init__(self):
+    def __init__(self, cold_start=False):
         conf = Config()
         self.__c = 'PRO_MANAGER'
         self.mas = Massage(self.__c)
@@ -16,7 +16,8 @@ class ProgramManager:
             self.program_dir = conf.config('PROGRAM_DIR')  # 程序管理器挂载路径
             self.program_list = []  # 维护程序列表
             # 初始化程序管理器
-            Loading.waba(self.__init, module=self.__c, desc='初始化程序管理器', colour='green', directory=self.system_lnk)
+            if cold_start:
+                Loading.waba(self.__init, module=self.__c, desc='初始化程序管理器', colour='green', directory=self.system_lnk)
             for lnk in Loading.loba(os.listdir(self.program_dir + '/lnk'), module=self.__c, desc='维护程序列表',
                                     colour='green'):
                 self.program_list.append(lnk[:-4])

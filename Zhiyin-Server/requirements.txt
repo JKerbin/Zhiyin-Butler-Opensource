@@ -2,7 +2,7 @@
 flask==3.0.2
 openai==1.29.0
 python-dotenv==1.0.1
-munpy==1.26.4
+munpy
 pymysql==1.1.0
 cryptography==42.0.7
 gevent==24.2.1

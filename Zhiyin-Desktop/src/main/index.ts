@@ -10,6 +10,12 @@ let clientCore;
 // 内核进程信号
 let sig;
 
+// 配置信息
+export const config = {
+  audioThreshold: '698',
+  serverMod: 'local',
+};
+
 // 新建窗口
 function createBrowserWindow({ icon, width, height, skipTb }) {
   const window = new BrowserWindow({
@@ -45,9 +51,19 @@ function createBrowserWindow({ icon, width, height, skipTb }) {
 
 // 客户端函数
 function client() {
+  // 初始化窗口
+  const settingWindow = createBrowserWindow({ icon: icon, width: 400, height: 500, skipTb: true });
+  if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
+    settingWindow.loadURL(process.env['ELECTRON_RENDERER_URL'] + '/#/setting');
+  } else {
+    const url = 'file://' + join(__dirname, '../renderer/index.html') + '#/setting';
+    settingWindow.loadURL(url);
+  }
+  settingWindow.hide()
   const startWindow = createBrowserWindow({ icon: icon, width: 900, height: 670, skipTb: false });
   const activationWindow = createBrowserWindow({ icon: icon, width: 900, height: 670, skipTb: false });
-  const mainWindow = createBrowserWindow({ icon: icon, width: 180, height: 100, skipTb: true });
+  const mainWindow = createBrowserWindow({ icon: icon, width: 200, height: 200, skipTb: true });
+
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
     startWindow.loadURL(process.env['ELECTRON_RENDERER_URL']);
   } else {
@@ -63,6 +79,31 @@ function client() {
         console.log('client_main closed');
       });
       exec();
+    }
+
+    if (msg.module === 'setting') {
+      // 重启主窗口
+      if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
+        mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'] + '/#/main');
+      } else {
+        const url = 'file://' + join(__dirname, '../renderer/index.html') + '#/main';
+        mainWindow.loadURL(url);
+      }
+      // 显示设置窗口
+      settingWindow.show()
+      // 注意要停止ai子进程
+      exec('taskkill /F /IM client_main.exe', () => {
+        console.log('client_main closed');
+      });
+      exec();
+    }
+
+    if (msg.module === 'setconfig') {
+      config.audioThreshold = msg.audioThreshold;
+      config.serverMod = msg.serverMod;
+      console.log(config.audioThreshold)
+      console.log(config.serverMod)
+      settingWindow.hide()
     }
 
     else if (msg.module === 'submit_invitation') {
@@ -127,10 +168,19 @@ function client() {
 
     // 启动ai子进程
     else if (msg.module === 'mainON') {
-      clientCore = spawn('bin/client_main.exe')
+      clientCore = spawn('bin/client_main.exe', [config.serverMod, config.audioThreshold])
       clientCore.stdout.on('data', (data) => {
         sig = data.toString();
         console.log(sig);
+        if (sig.includes('signal_mainbad')) {
+          // 刷新主窗口
+          if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
+            mainWindow.loadURL(process.env['ELECTRON_RENDERER_URL'] + '/#/main');
+          } else {
+            const url = 'file://' + join(__dirname, '../renderer/index.html') + '#/main';
+            mainWindow.loadURL(url);
+          }
+        }
       });
     }
 

@@ -6,7 +6,7 @@ from database import Database
 from ts import TextAndSound
 from utils import *
 
-version = '0.1.2'  # 当前版本
+version = '0.1.3'  # 当前版本
 
 ai = Brain()  # 主语音ai助手
 aai = TextAndSound()  # auxiliary_ai语音识别助手

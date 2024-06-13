@@ -5,5 +5,5 @@ config = {
     "LOG_PATH": "log",  # 日志信息保存目录，不需要更改
     "SERVER_HOST": "http://127.0.0.1",  # 服务地址，默认使用本地回环测试地址
     "SERVER_PORT": "1228",  # 服务端口，默认1228
-    "SERVER_MOD": "hd",  # 服务模式（tts模式），mormal使用百度tts接口，hd模式使用openai的tts接口，local模式使用Win11的tts接口
+    "DEV": "release",  # 发行版模式专用，禁止修改此处
 }

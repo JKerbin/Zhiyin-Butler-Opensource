@@ -11,8 +11,8 @@ prom = ProgramManager()
 user = Audio()
 mas = Massage(module)
 
-# 服务模式：普通/增强/本地
-server_mode = conf.config('SERVER_MOD')
+# 客户端加载模式
+dev = conf.config('DEV')
 
 
 # 播放提示音
@@ -33,8 +33,32 @@ if __name__ == '__main__':
 
         play_audio('hello.wav')
 
+        server_mode = 'local'  # 默认值
+        audio_threshold = '500'  # 默认值
+        # 开发者模式
+        if dev == 'dev':
+            # 服务模式：普通/增强/本地
+            server_mode = conf.config('SERVER_MOD')
+            # 收音阈值：100~1000
+            audio_threshold = conf.config('AUDIO_THRESHOLD')
+        # 发行模式
+        elif dev == 'release':
+            if len(sys.argv) != 3:
+                play_audio('erraudio.wav')
+                sig.mainbad()
+                mas.error('调用错误')
+            else:
+                # 服务模式：从参数获取
+                server_mode = sys.argv[1]
+                # 收音阈值：从参数获取
+                audio_threshold = sys.argv[2]
+        else:
+            play_audio('erraudio.wav')
+            sig.mainbad()
+            mas.error('启动参数错误')
+
         while True:
-            voice, voice_len = user.record()
+            voice, voice_len = user.record(audio_threshold=audio_threshold)
             if voice == 'bad':
                 play_audio('nodevice.wav')
                 raise Exception('设备不完整')
@@ -60,5 +84,5 @@ if __name__ == '__main__':
                 pass
 
     except Exception as e:
-        mas.info(str(e))
+        mas.error(str(e))
         sig.mainbad()

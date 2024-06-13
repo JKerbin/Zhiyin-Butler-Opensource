@@ -1,4 +1,5 @@
 from network import Network
+from program import ProgramManager
 from utils import *
 
 module = 'BOOT'
@@ -14,6 +15,8 @@ if __name__ == '__main__':
     mas.info('客户端初始化验证')
     result = net.verification_client()
     if result == 'success':
+        # 初始化程序列表
+        _ = ProgramManager(cold_start=True)
         sig.main()
     elif result == 'fail':
         sig.activation()

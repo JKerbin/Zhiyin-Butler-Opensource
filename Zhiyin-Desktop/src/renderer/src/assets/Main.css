@@ -1,8 +1,10 @@
 .container {
+    position: relative;
+    margin-top: 140px;
     height: 48px;
-    width: 144px;
+    width: 150px;
     border-radius: 24px 0px 24px 0px;
-    box-shadow:  2px 2px 6px #666666;
+    box-shadow: 2px 2px 6px #666666;
     overflow: hidden;
 
     --s: 360px;
@@ -21,9 +23,16 @@
     background-size: var(--s) calc(var(--s) * 0.577);
 }
 
+#title {
+    position: absolute;
+    top: 50%;
+    left: 56%;
+    transform: translate(-50%, -50%) scale(0.035);
+}
+
 .checkbox {
-    top: 32.5%;
-    left: 18%;
+    top: 52%;
+    left: 17%;
     transform: translate(-50%, -50%);
     width: 24px;
     height: 24px;
@@ -47,7 +56,6 @@
     margin-bottom: 10px;
     position: relative;
     font-size: 16px;
-    color: #fff;
     cursor: pointer;
     transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
 }
@@ -75,11 +83,106 @@
     transform: scale(1.2);
 }
 
-.close {
+.wrapper {
+    -webkit-app-region: no-drag;
+    --width: 40px;
+    --height: 40px;
+    --border-radius: var(--height);
+    width: var(--width);
+    height: var(--height);
+    top: 130px;
+    left: 139px;
+    position: absolute;
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .btn {
+    opacity: 0.8;
+    background-image: linear-gradient(145deg, #e81cff, #7153e1, #40c9ff);
+    width: var(--width);
+    height: var(--height);
+    position: relative;
+    z-index: 3;
+    border-radius: 0 var(--border-radius) var(--border-radius) var(--border-radius);
+    box-shadow: 2px 2px 6px #666666;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -webkit-animation: plus-animation-reverse 0.5s ease-out forwards;
+    animation: plus-animation-reverse 0.5s ease-out forwards;
+}
+
+.wrapper .btn::before,
+.wrapper .btn::after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 4px;
+    background: #fafafa;
+}
+
+.wrapper .btn::before {
+    width: 4px;
+    height: 20px;
+}
+
+.wrapper .btn::after {
+    width: 20px;
+    height: 4px;
+}
+
+.wrapper .tooltip {
+    width: 60px;
+    height: 40px;
+    top: -40px;
+    left: -78px;
+    border-radius: 20px 0px 20px 0px;
+    position: absolute;
+    background: #fafafa;
+    z-index: -1;
+    padding: 0 15px;
+    box-shadow: 2px 2px 6px #666666;
+    opacity: 0;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: opacity 0.15s ease-in, top 0.15s ease-in, width 0.15s ease-in;
+}
+
+.wrapper input {
+    height: 100%;
+    width: 100%;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    position: absolute;
+    z-index: 5;
+    opacity: 0;
+}
+
+.wrapper input:checked~.btn {
+    -webkit-animation: plus-animation 0.5s ease-out forwards;
+    animation: plus-animation 0.5s ease-out forwards;
+}
+
+.wrapper input:checked~.tooltip {
+    width: 60px;
+    height: 40px;
+    top: -40px;
+    left: -78px;
+    -webkit-animation: stretch-animation 1s ease-out forwards 0.15s;
+    animation: stretch-animation 1s ease-out forwards 0.15s;
+    opacity: 1;
+}
+
+.wrapper .tooltip .close {
     -webkit-app-region: no-drag;
     position: absolute;
-    top: 32%;
-    left: 74%;
+    top: 20px;
+    left: 67.5px;
     background: none;
     border: none;
     transform: translate(-50%, -50%);
@@ -87,13 +190,194 @@
     font-size: 17px;
 }
 
-.close:hover {
-    color: #e81cff;
+.wrapper .tooltip .close img {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%) scale(0.1, 0.1);
 }
 
-#title {
+.wrapper .tooltip .setting {
+    -webkit-app-region: no-drag;
     position: absolute;
-    top: 32%;
-    left: 46%;
-    transform: translate(-50%, -50%) scale(0.03);
+    top: 20px;
+    left: 22.5px;
+    background: none;
+    border: none;
+    transform: translate(-50%, -50%);
+    color: #a0a0a0;
+    font-size: 17px;
+}
+
+.wrapper .tooltip .setting img {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%) scale(0.1, 0.1);
+}
+
+@-webkit-keyframes pang-animation {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+}
+
+@keyframes pang-animation {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes plus-animation {
+    0% {
+        transform: rotate(0) scale(1);
+    }
+
+    20% {
+        transform: rotate(60deg) scale(0.93);
+    }
+
+    55% {
+        transform: rotate(35deg) scale(0.97);
+    }
+
+    80% {
+        transform: rotate(48deg) scale(0.94);
+    }
+
+    100% {
+        transform: rotate(45deg) scale(0.95);
+    }
+}
+
+@keyframes plus-animation {
+    0% {
+        transform: rotate(0) scale(1);
+    }
+
+    20% {
+        transform: rotate(60deg) scale(0.93);
+    }
+
+    55% {
+        transform: rotate(35deg) scale(0.97);
+    }
+
+    80% {
+        transform: rotate(48deg) scale(0.94);
+    }
+
+    100% {
+        transform: rotate(45deg) scale(0.95);
+    }
+}
+
+@-webkit-keyframes plus-animation-reverse {
+    0% {
+        transform: rotate(45deg) scale(0.95);
+    }
+
+    20% {
+        transform: rotate(-15deg);
+    }
+
+    55% {
+        transform: rotate(10deg);
+    }
+
+    80% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: rotate(0) scale(1);
+    }
+}
+
+@keyframes plus-animation-reverse {
+    0% {
+        transform: rotate(45deg) scale(0.95);
+    }
+
+    20% {
+        transform: rotate(-15deg);
+    }
+
+    55% {
+        transform: rotate(10deg);
+    }
+
+    80% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: rotate(0) scale(1);
+    }
+}
+
+@-webkit-keyframes stretch-animation {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    10% {
+        transform: scale(1.1, 0.9);
+    }
+
+    30% {
+        transform: scale(0.9, 1.1);
+    }
+
+    50% {
+        transform: scale(1.05, 0.95);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+@keyframes stretch-animation {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    10% {
+        transform: scale(1.1, 0.9);
+    }
+
+    30% {
+        transform: scale(0.9, 1.1);
+    }
+
+    50% {
+        transform: scale(1.05, 0.95);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
 }

@@ -110,6 +110,7 @@ class Massage:
     def error(self, massage):
         print(f"\033[31mFROM_{self.module}_ERROR: {massage}\033[0m")
         self.write_log(str(datetime.datetime.now()) + f": FROM_{self.module}_ERROR: {massage}")
+        sys.exit()
 
 
 class Loading:

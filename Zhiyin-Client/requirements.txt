@@ -6,3 +6,8 @@ requests==2.31.0
 flask==3.0.2
 psutil==5.9.8
 comtypes==1.4.3
+pyinstaller==6.6.0
+huggingface-hub
+pyyaml
+safetensors>=0.3.1
+torch>=1.10.0

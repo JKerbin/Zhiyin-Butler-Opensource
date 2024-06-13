@@ -7,7 +7,20 @@
             </label>
         </div>
         <img src="../assets/title.png" id="title">
-        <button class="close" @click="close">╳</button>
+
+        <!-- <button class="close" @click="close">╳</button> -->
+    </div>
+    <div class="wrapper">
+        <input type="checkbox" />
+        <div class="btn"></div>
+        <div class="tooltip">
+            <button class="setting" @click="setting">
+                <img src="../assets/setting.svg">
+            </button>
+            <button class="close" @click="close">
+                <img src="../assets/exit.svg">
+            </button>
+        </div>
     </div>
 
 
@@ -36,6 +49,13 @@ const changeMain = () => {
         })
         mainOn = false
     }
+}
+
+const setting = () => {
+    electron.ipcRenderer.invoke('ipc', {
+        module: 'setting',
+        window: 'mainWindow'
+    })
 }
 
 const close = () => {

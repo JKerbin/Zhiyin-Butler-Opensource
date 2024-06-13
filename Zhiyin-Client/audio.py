@@ -23,7 +23,7 @@ class Audio:
         }
         self.mas = Massage(self.__c)
 
-    def record(self):
+    def record(self, audio_threshold):
         """
         采集base64音频信息
         :return:
@@ -50,7 +50,7 @@ class Audio:
                     frames.append(data)
                     # 检测静音时间
                     audio_data = np.frombuffer(data, dtype=np.int16)
-                    if np.max(np.abs(audio_data)) < 100:
+                    if np.max(np.abs(audio_data)) < int(audio_threshold):
                         silent_frames += 1
                     else:
                         silent_frames = 0

@@ -23,8 +23,11 @@
 
 项目的所有内容遵循[Apache License 2.0开源协议](https://github.com/JKerbin/Zhiyin-Butler-Opensource/blob/main/LICENSE)，作为通用型电脑管家系统示例供开发者参考学习。
 
-目前公开的源码为测试版beta0.1.3，主要功能包括：
+代码版本：客户端beta0.2.0，服务端beta0.1.3，主要功能包括：
 
+- 自定设置
+\- 语音模式选择
+\- 收音阈值调整
 - 随心聊天
 - 开启软件
 
@@ -62,6 +65,12 @@
 - 部署客户端需要[node.js](https://nodejs.org/en) + [pyinstaller](https://pyinstaller.org/en/stable/)相关依赖
 
 ## 更新说明
+
+客户端
 - version-beta-0.1.2: 客户端新增开发模式（从config.env中读取配置）和发行模式（从config.py中读取配置）；
-- version-beta-0.1.2: 修复了服务端mysql服务超时断开的bug；
 - version-beta-0.1.3: 添加了使用Win11内置的文字转语音API功能，加快响应速度；
+- version-beta-0.2.0（重要更新）: 添加了设置界面，可以在设置中自由调整语音模式和收音阈值
+
+服务端
+- version-beta-0.1.2（漏洞修复）: 修复了服务端mysql服务超时断开的bug；
+- version-beta-0.1.3: 针对客户端使用本地TTS接口的针对性优化；
