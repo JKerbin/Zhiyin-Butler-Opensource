@@ -4,7 +4,7 @@
 
 ## 说明
 
-本项目为Zhiyin-Butler桌面可视化组件，版本为beta0.1.0
+本项目为Zhiyin-Butler桌面可视化组件，版本为beta0.2.0
 
 当前版本包含三个窗口：
 
