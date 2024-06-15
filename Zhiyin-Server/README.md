@@ -4,7 +4,7 @@
 
 ## 说明
 
-本项目为Zhiyin-Butler服务端源代码，版本为beta0.1.0
+本项目为Zhiyin-Butler服务端源代码，版本为beta0.1.3
 
 包含功能：
 
