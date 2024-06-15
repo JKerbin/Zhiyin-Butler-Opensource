@@ -4,7 +4,7 @@
 
 ## 说明
 
-本项目为Zhiyin-Butler客户端内核源代码，版本为beta0.1.0
+本项目为Zhiyin-Butler客户端内核源代码，版本为beta0.2.0
 
 项目目录：
 <pre>
