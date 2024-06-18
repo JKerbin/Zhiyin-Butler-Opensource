@@ -45,9 +45,9 @@ POST /api/ai
 - **Content-Type**: `application/json`
 
 - **响应体**:
-    - `type` (string): 响应类型 (`chat`聊天模式或 `func`功能模式)。
-    - `content` (string): 响应的内容。
-    - `mode` (string): 响应使用的 TTS 模式。
+    - `type` (string): 响应类型 (`chat`聊天模式或 `func`功能模式)
+    - `content` (string): 响应的内容
+    - `mode` (string): 响应使用的 TTS 模式
 
 #### 示例
 
@@ -78,21 +78,21 @@ POST /api/verification
 ```
 
 #### 描述
-根据提供的 MAC 地址验证用户。
+根据提供的 MAC 地址验证用户
 
 #### 请求
 
 - **Content-Type**: `application/json`
 
 - **请求体参数**:
-    - `mac` (list): 用户的 MAC 地址列表。
+    - `mac` (list): 用户的 MAC 地址列表
 
 #### 响应
 
 - **Content-Type**: `application/json`
 
 - **响应体**:
-    - `state` (string): 验证结果 (`success` 或 `failure`)。
+    - `state` (string): 验证结果 (`success` 或 `failure`)
 
 #### 示例
 
@@ -118,15 +118,15 @@ POST /api/activation
 ```
 
 #### 描述
-根据提供的 MAC 地址和邀请码激活用户。
+根据提供的 MAC 地址和邀请码激活用户
 
 #### 请求
 
 - **Content-Type**: `application/json`
 
 - **请求体参数**:
-    - `mac` (string): 用户的 MAC 地址。
-    - `invitation` (string): 用户的邀请码。
+    - `mac` (string): 用户的 MAC 地址
+    - `invitation` (string): 用户的邀请码
 
 #### 响应
 
