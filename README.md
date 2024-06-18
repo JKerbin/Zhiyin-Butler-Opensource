@@ -66,11 +66,11 @@
 
 ## 更新说明
 
-客户端
-- version-beta-0.1.2: 客户端新增开发模式（从config.env中读取配置）和发行模式（从config.py中读取配置）；
-- version-beta-0.1.3: 添加了使用Win11内置的文字转语音API功能，加快响应速度；
-- version-beta-0.2.0（重要更新）: 添加了设置界面，可以在设置中自由调整语音模式和收音阈值
+- 客户端
+  - version-beta-0.1.2: 客户端新增开发模式（从config.env中读取配置）和发行模式（从config.py中读取配置）
+  - version-beta-0.1.3: 添加了使用Win11内置的文字转语音API功能，加快响应速度
+  - version-beta-0.2.0（重要更新）: 添加了设置界面，可以在设置中自由调整语音模式和收音阈值
 
-服务端
-- version-beta-0.1.2（漏洞修复）: 修复了服务端mysql服务超时断开的bug；
-- version-beta-0.1.3: 针对客户端使用本地TTS接口的针对性优化；
+- 服务端
+  - version-beta-0.1.2（漏洞修复）: 修复了服务端mysql服务超时断开的bug
+  - version-beta-0.1.3: 针对客户端使用本地TTS接口的针对性优化
