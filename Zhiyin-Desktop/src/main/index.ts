@@ -129,6 +129,9 @@ function client() {
       } else if (msg.window === 'startWindow') {
         // 退出主程序
         app.quit();
+      } else if (msg.window === 'activationWindow') {
+        // 退出主程序
+        app.quit();
       } else if (msg.window === 'textWindow') {
         // 关闭聊天窗口
         textWindow.hide()
