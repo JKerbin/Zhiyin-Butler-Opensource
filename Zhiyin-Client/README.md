@@ -4,7 +4,7 @@
 
 ## 说明
 
-本项目为Zhiyin-Butler客户端内核源代码，版本为beta0.2.0
+本项目为Zhiyin-Butler客户端内核源代码，版本为beta0.3.0
 
 项目目录：
 <pre>
@@ -28,6 +28,7 @@
 ├── client_boot.py                  # 客户端初始化内核
 ├── client_activation.py            # 客户端激活内核
 ├── client_main.py                  # 客户端主内核
+├── client_text.py                  # 客户端文本模式内核
 ├── audio.py                        # 音频处理相关组件
 ├── network.py                      # 网络连接相关组件
 ├── program.py                      # 程序管理相关组件
@@ -61,6 +62,7 @@ SERVER_MOD="normal" # 服务模式（tts模式），mormal使用百度tts接口�
 $ python client_boot.py
 $ python client_activation.py [激活码]
 $ python client_main.py
+$ python client_text.py [用户输入]
 ```
 
 ### 打包内核
@@ -69,4 +71,5 @@ $ python client_main.py
 $ pyinstaller -F client_boot.py
 $ pyinstaller -F client_activation.py
 $ pyinstaller -F client_main.py
+$ pyinstaller -F client_text.py
 ```

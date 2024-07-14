@@ -4,13 +4,13 @@
 
 ## 说明
 
-本项目为Zhiyin-Butler服务端源代码，版本为beta0.1.3
+本项目为Zhiyin-Butler服务端源代码，版本为beta0.3.0
 
 包含功能：
 
 - 处理 AI 交互请求
 - 用户登录验证
-- 邀请码注册
+- 邀请码注册。
 
 ## 基础 URL
 
@@ -45,9 +45,9 @@ POST /api/ai
 - **Content-Type**: `application/json`
 
 - **响应体**:
-    - `type` (string): 响应类型 (`chat`聊天模式或 `func`功能模式)
-    - `content` (string): 响应的内容
-    - `mode` (string): 响应使用的 TTS 模式
+    - `type` (string): 响应类型 (`chat`聊天模式或 `func`功能模式)。
+    - `content` (string): 响应的内容。
+    - `mode` (string): 响应使用的 TTS 模式。
 
 #### 示例
 
@@ -70,6 +70,46 @@ POST /api/ai
 }
 ```
 
+### 2. 文本模式
+
+#### 端点
+```
+POST /api/text
+```
+
+#### 描述
+处理客户端文本模式
+
+#### 请求
+
+- **Content-Type**: `application/json`
+
+- **请求体参数**:
+    - `user_input` (string): 用户输入文本
+
+#### 响应
+
+- **Content-Type**: `application/json`
+
+- **响应体**:
+    - `content` (string): ai响应的内容。
+
+#### 示例
+
+**请求:**
+```json
+{
+    "user_input": "你好"
+}
+```
+
+**响应:**
+```json
+{
+    "content": "你好，我是智音，有什么可以帮助你的吗？"
+}
+```
+
 ### 2. 用户验证
 
 #### 端点
@@ -78,21 +118,21 @@ POST /api/verification
 ```
 
 #### 描述
-根据提供的 MAC 地址验证用户
+根据提供的 MAC 地址验证用户。
 
 #### 请求
 
 - **Content-Type**: `application/json`
 
 - **请求体参数**:
-    - `mac` (list): 用户的 MAC 地址列表
+    - `mac` (list): 用户的 MAC 地址列表。
 
 #### 响应
 
 - **Content-Type**: `application/json`
 
 - **响应体**:
-    - `state` (string): 验证结果 (`success` 或 `failure`)
+    - `state` (string): 验证结果 (`success` 或 `failure`)。
 
 #### 示例
 
@@ -118,15 +158,15 @@ POST /api/activation
 ```
 
 #### 描述
-根据提供的 MAC 地址和邀请码激活用户
+根据提供的 MAC 地址和邀请码激活用户。
 
 #### 请求
 
 - **Content-Type**: `application/json`
 
 - **请求体参数**:
-    - `mac` (string): 用户的 MAC 地址
-    - `invitation` (string): 用户的邀请码
+    - `mac` (string): 用户的 MAC 地址。
+    - `invitation` (string): 用户的邀请码。
 
 #### 响应
 

@@ -14,9 +14,9 @@ class Brain:
     def program_manager(self, user_input, plist, proxies):
         """
         古希腊掌管控制软件的神
-        :param: user_input: 用户输入
-        :param: proxies: openai代理
-        :param: plist: 用户软件列表
+        :param user_input: 用户输入
+        :param proxies: openai代理
+        :param plist: 用户软件列表
         :return: 选中的程序名称
         """
         try:
@@ -43,14 +43,42 @@ class Brain:
         except Exception as e:
             self.mas.error(e)
 
+    def text(self, user_input, proxies):
+        """
+        处理文本模式客户端请求
+        :param user_input: 用户输入
+        :param proxies: openai代理
+        :return: 用户输入, ai输出
+        """
+        try:
+            # 系统消息
+            system_message = {
+                "role": "system",
+                "content": "你是一个AI助手，你的名字叫‘智音’，目前你处于‘文本模式’，你的工作是和用户聊天并回答用户的问题。\n"
+                           "你没有执行电脑功能的能力，如果你觉得用户在让你执行某项功能，你可以让他试试使用智音的‘语音模式'。"
+            }
+            headers = {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + self.__openai_api_key
+            }
+            payload = {
+                "model": "gpt-3.5-turbo",
+                "messages": [system_message, {"role": "user", "content": user_input}],
+                "temperature": 0.7
+            }
+            response = requests.post(self.base_url, headers=headers, json=payload, proxies=proxies)
+            response_data = response.json()
+            ai_output = response_data['choices'][0]['message']['content']
+            return user_input, ai_output
+        except Exception as e:
+            self.mas.error(e)
+
     def cortex(self, user_input, proxies):
         """
         大脑皮层：负责简单对话和执行功能
-        :param: user_input: 用户输入
-        :param: proxies: openai代理
-        :return:
-        - 用户输入
-        - ai输出
+        :param user_input: 用户输入
+        :param proxies: openai代理
+        :return: 用户输入, ai输出
         """
         try:
             # 系统消息

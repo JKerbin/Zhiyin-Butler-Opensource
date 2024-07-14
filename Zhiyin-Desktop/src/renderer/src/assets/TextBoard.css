@@ -1,0 +1,179 @@
+.chat-container {
+    position: absolute;
+    display: flex;
+    height: 540px;
+    width: 430px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.25);
+}
+
+.header {
+    position: flex;
+    bottom: 0;
+    left: 0;
+    width: 100vh;
+    height: 60px;
+    background-color: #f9f9f9;
+}
+
+.header span {
+    top: 30px;
+    left: 165px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    color: #d387f4;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-left: 20px;
+}
+
+.header #title {
+    top: 30px;
+    left: 75px;
+    position: absolute;
+    transform: translate(-50%, -50%) scale(0.05);
+}
+
+.close {
+    -webkit-app-region: no-drag;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    top: 30px;
+    left: 395px;
+    background: none;
+    border: none;
+    transform: translate(-50%, -50%);
+    color: #a0a0a0;
+    font-size: 17px;
+}
+
+.close img {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%) scale(0.15, 0.15);
+}
+
+.input-container {
+    position: flex;
+    bottom: 0;
+    left: 0;
+    width: 100vh;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.container {
+    position: relative;
+    box-sizing: border-box;
+    width: fit-content;
+}
+
+.mainbox {
+    -webkit-app-region: no-drag;
+    box-sizing: border-box;
+    position: relative;
+    width: 410px;
+    height: 50px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    border-radius: 160px;
+    background-color: #d387f488;
+    transition: all 0.3s ease;
+}
+
+.checkbox:focus {
+    border: none;
+    outline: none;
+}
+
+.checkbox {
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 17px;
+    top: 10px;
+    z-index: 9;
+    cursor: pointer;
+    appearance: none;
+}
+
+.search_input {
+    box-sizing: border-box;
+    height: 100%;
+    width: 365px;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    font-size: 1em;
+    color: #fff;
+    transition: all 0.3s ease;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.search_input::placeholder {
+    color: #fff;
+}
+
+.iconContainer {
+    box-sizing: border-box;
+    padding-top: 5px;
+    width: fit-content;
+    transition: all 0.3s ease;
+}
+
+.search_icon {
+    box-sizing: border-box;
+    fill: white;
+    font-size: 1.3em;
+}
+
+.chat-box {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    max-height: 600px;
+    overflow-y: auto;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: #d387f4;
+    color: #fff;
+    border-radius: 10px 10px 0 10px;
+    padding: 10px;
+    margin-top: 10px;
+    max-width: 250px;
+    word-wrap: break-word;
+    margin-left: auto;
+    margin-right: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: #E5E5EA;
+    color: #000;
+    border-radius: 10px 10px 10px 0;
+    padding: 10px;
+    margin-top: 10px;
+    max-width: 250px;
+    word-wrap: break-word;
+    margin-left: 10px;
+    margin-right: auto;
+}

@@ -3,6 +3,7 @@ import Start from '../views/Start.vue'
 import Activation from '../views/Activation.vue'
 import Main from '../views/Main.vue'
 import Setting from '../views/Setting.vue'
+import Text from '../views/Text.vue'
 
 export default createRouter({
     history: createWebHashHistory(),
@@ -11,5 +12,6 @@ export default createRouter({
         { path: "/activation", component: Activation },
         { path: "/main", component: Main },
         { path: "/setting", component: Setting },
+        { path: "/text", component: Text },
     ]
 })

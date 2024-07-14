@@ -107,12 +107,10 @@ class Network:
         发送用户语音到服务器，接受服务器返回结果
         :param speech: base64编码的音频信息
         :param speech_len: 音频文件大小
+        :param plist: 程序列表
         :param api: 服务器api接口
         :param server_mode: 服务模式（正常模式/增强模式）
-        :return:
-        -type 返回类型（目前包括'chat', 'func'）
-        -content 返回内容
-        -mode 返回的音频模式，正常模式16000采样率，增强模式24000采样率
+        :return: type 返回类型（目前包括'chat', 'func'）, content 返回内容, mode 返回的音频模式，正常模式16000采样率，增强模式24000采样率
         """
         try:
             url = self.__server + api
@@ -137,3 +135,17 @@ class Network:
         except Exception as e:
             self.mas.error(e)
             return 'error', self.err_audio, 'tts'
+
+    def text_client(self, user_input, api='text'):
+        """
+        :param user_input: 用户输入
+        :return: ai输出
+        """
+        url = self.__server + api
+        self.mas.info(f'尝试与{url}建立连接')
+        data = {
+            "user_input": user_input,
+        }
+        headers = {'Content-Type': 'application/json'}
+        response = requests.post(url, data=json.dumps(data), headers=headers, timeout=10)
+        return response.json()['content']

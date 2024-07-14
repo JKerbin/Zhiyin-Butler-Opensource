@@ -54,6 +54,24 @@ def ai_api():
     return jsonify(response_data)
 
 
+@app.route('/api/text', methods=['POST'])
+def text_api():
+    """
+    文本模式服务
+    """
+    # 设置opan_ai代理地址
+    proxies = {
+        'http': conf.config('OPENAI_PROXIES'),
+        'https': conf.config('OPENAI_PROXIES'),
+    }
+    data = request.get_json()
+    _, ai_output = ai.text(data['user_input'], proxies)
+    response_data = {
+        "content": ai_output,
+    }
+    return jsonify(response_data)
+
+
 @app.route('/api/verification', methods=['POST'])
 def verification_api():
     """

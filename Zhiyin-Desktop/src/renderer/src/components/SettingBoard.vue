@@ -1,7 +1,7 @@
 <template>
     <div class="card" id="userboard">
         <div class="shape" v-for="n in 4" :key="n" :id="'shape' + n"></div>
-        <span id="version">version-beta-0.1.2<br>developed by Jason JKerbin</span>
+        <span id="version">version-beta-0.3.0<br>developed by Jason JKerbin</span>
         <div id="header">设置</div>
         <div id="header1">语音模式</div>
         <div class="container">

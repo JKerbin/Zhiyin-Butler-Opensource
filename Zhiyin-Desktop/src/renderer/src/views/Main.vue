@@ -17,6 +17,9 @@
             <button class="setting" @click="setting">
                 <img src="../assets/setting.svg">
             </button>
+            <button class="text" @click="text">
+                <img src="../assets/text.svg">
+            </button>
             <button class="close" @click="close">
                 <img src="../assets/exit.svg">
             </button>
@@ -54,6 +57,13 @@ const changeMain = () => {
 const setting = () => {
     electron.ipcRenderer.invoke('ipc', {
         module: 'setting',
+        window: 'mainWindow'
+    })
+}
+
+const text = () => {
+    electron.ipcRenderer.invoke('ipc', {
+        module: 'text',
         window: 'mainWindow'
     })
 }

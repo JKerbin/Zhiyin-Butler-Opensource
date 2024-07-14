@@ -3,6 +3,7 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 import { spawn } from 'child_process'
+const iconv = require('iconv-lite');
 const { exec } = require('child_process');
 
 // 内核进程
@@ -17,7 +18,7 @@ export const config = {
 };
 
 // 新建窗口
-function createBrowserWindow({ icon, width, height, skipTb }) {
+function createBrowserWindow({ icon, width, height, skipTb, onTop }) {
   const window = new BrowserWindow({
     icon: icon,
     width: width,
@@ -28,7 +29,7 @@ function createBrowserWindow({ icon, width, height, skipTb }) {
     show: false,
     autoHideMenuBar: true,
     skipTaskbar: skipTb,
-    alwaysOnTop: true,
+    alwaysOnTop: onTop,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
@@ -52,7 +53,8 @@ function createBrowserWindow({ icon, width, height, skipTb }) {
 // 客户端函数
 function client() {
   // 初始化窗口
-  const settingWindow = createBrowserWindow({ icon: icon, width: 400, height: 500, skipTb: true });
+  // 设置窗口
+  const settingWindow = createBrowserWindow({ icon: icon, width: 400, height: 500, skipTb: true, onTop: false });
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
     settingWindow.loadURL(process.env['ELECTRON_RENDERER_URL'] + '/#/setting');
   } else {
@@ -60,9 +62,21 @@ function client() {
     settingWindow.loadURL(url);
   }
   settingWindow.hide()
-  const startWindow = createBrowserWindow({ icon: icon, width: 900, height: 670, skipTb: false });
-  const activationWindow = createBrowserWindow({ icon: icon, width: 900, height: 670, skipTb: false });
-  const mainWindow = createBrowserWindow({ icon: icon, width: 200, height: 200, skipTb: true });
+  // 文本聊天窗口
+  const textWindow = createBrowserWindow({ icon: icon, width: 430, height: 550, skipTb: true, onTop: false });
+  if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
+    textWindow.loadURL(process.env['ELECTRON_RENDERER_URL'] + '/#/text');
+  } else {
+    const url = 'file://' + join(__dirname, '../renderer/index.html') + '#/text';
+    textWindow.loadURL(url);
+  }
+  textWindow.hide()
+  // 开始窗口
+  const startWindow = createBrowserWindow({ icon: icon, width: 900, height: 670, skipTb: false, onTop: false });
+  // 产品激活窗口
+  const activationWindow = createBrowserWindow({ icon: icon, width: 900, height: 670, skipTb: false, onTop: false });
+  // 主页面浮窗
+  const mainWindow = createBrowserWindow({ icon: icon, width: 200, height: 130, skipTb: true, onTop: true });
 
   if (is.dev && process.env['ELECTRON_RENDERER_URL']) {
     startWindow.loadURL(process.env['ELECTRON_RENDERER_URL']);
@@ -71,14 +85,54 @@ function client() {
     startWindow.loadFile(url);
   }
 
+  // 文本模式通讯
+  ipcMain.handle('text-input', async (_, userInput) => {
+    return new Promise((resolve, reject) => {
+      const clientCore = spawn('bin/client_text.exe', [userInput]);
+      clientCore.stdout.on('data', (data) => {
+        const output = iconv.decode(data, 'gbk');
+        // const output = data.toString()
+        console.log(output)
+        const aiOutputIndex = output.indexOf('ai输出：');
+
+        let res;
+        if (aiOutputIndex !== -1) {
+          res = output.substring(aiOutputIndex + 5); // 截取 "ai输出：" 后的内容
+        } else {
+          res = '出错了，请检查网络或者程序完整性';
+        }
+
+        resolve(res);
+      });
+
+      clientCore.stderr.on('data', (data) => {
+        reject(data.toString());
+      });
+
+      clientCore.on('error', (err) => {
+        reject(err.message);
+      });
+    });
+  });
+
+  // 进程管理通讯
   ipcMain.handle('ipc', (_, msg) => {
     if (msg.module === 'close') {
-      app.quit();
-      // 注意要停止ai子进程
-      exec('taskkill /F /IM client_main.exe', () => {
-        console.log('client_main closed');
-      });
-      exec();
+      if (msg.window === 'mainWindow') {
+        // 退出主程序
+        app.quit();
+        // 注意要停止ai子进程
+        exec('taskkill /F /IM client_main.exe', () => {
+          console.log('client_main closed');
+        });
+        exec();
+      } else if (msg.window === 'startWindow') {
+        // 退出主程序
+        app.quit();
+      } else if (msg.window === 'textWindow') {
+        // 关闭聊天窗口
+        textWindow.hide()
+      }
     }
 
     if (msg.module === 'setting') {
@@ -96,6 +150,11 @@ function client() {
         console.log('client_main closed');
       });
       exec();
+    }
+
+    if (msg.module === 'text') {
+      // 显示文本聊天窗口
+      textWindow.show()
     }
 
     if (msg.module === 'setconfig') {
@@ -194,40 +253,31 @@ function client() {
   });
 }
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
 app.whenReady().then(() => {
-  // Set app user model id for windows
+  // 为windows设置应用程序用户模型id
   electronApp.setAppUserModelId('com.electron')
 
-  // Default open or close DevTools by F12 in development
-  // and ignore CommandOrControl + R in production.
-  // see https://github.com/alex8088/electron-toolkit/tree/master/packages/utils
+  // 默认使用F12开启开发者模式
+  // 开发模式中忽略Command(Control) + R
+  // 更多细节：https://github.com/alex8088/electron-toolkit/tree/master/packages/utils
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window)
   })
 
-  // IPC test
+  // IPC测试
   ipcMain.on('ping', () => console.log('pong'))
 
   client()
 
   app.on('activate', function () {
-    // On macOS it's common to re-create a window in the app when the
-    // dock icon is clicked and there are no other windows open.
+    // 在macOS上，当单击dock图标并且没有其他打开的窗口时，通常会在应用程序中重新创建一个窗口
     if (BrowserWindow.getAllWindows().length === 0) client()
   })
 })
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
+// 关闭所有窗口后退出（macOS除外，应用程序及其菜单栏通常会保持活动状态，直到用户使用Command + Q退出）
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
 })
-
-// In this file you can include the rest of your app"s specific main process
-// code. You can also put them in separate files and require them here.

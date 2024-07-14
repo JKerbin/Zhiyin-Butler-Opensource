@@ -26,9 +26,7 @@ class Audio:
     def record(self, audio_threshold):
         """
         采集base64音频信息
-        :return:
-        - base64编码的音频文件
-        - 音频文件大小
+        :return: base64编码的音频文件, 音频文件大小
         """
         try:
             self.mas.info('采集base64音频信息')
@@ -108,9 +106,7 @@ class Audio:
         """
         将wav文件解码为base64编码
         :param wav: 文件路径
-        :return:
-        - base64编码信息
-        - 音频文件大小
+        :return: base64编码信息, 音频文件大小
         """
         try:
             self.mas.info(f'从{wav}中解码音频为base64编码')
