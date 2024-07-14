@@ -36,6 +36,10 @@
 
 [演示视频](https://github.com/JKerbin/Zhiyin-Butler-Opensource/assets/81380030/84931fa2-0194-4da9-b404-610caf5eac15)
 
+0.3.0新功能————文本模式演示：
+
+[演示视频](https://github.com/user-attachments/assets/7260faf7-2c92-42f1-b710-7d0ac05493de)
+
 更多功能正在开发中……
 
 ## 开发相关
