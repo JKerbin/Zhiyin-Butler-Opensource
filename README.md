@@ -31,6 +31,8 @@
 - 自定设置
   - 语音模式选择
   - 收音阈值调整
+ 
+[下载测试版beta 0.3.0安装包](https://github.com/JKerbin/Zhiyin-Butler-Opensource/releases/tag/%E5%AE%89%E8%A3%85%E5%8C%85)
 
 播放演示视频请解除静音：
 
