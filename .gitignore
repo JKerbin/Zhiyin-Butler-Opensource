@@ -3,6 +3,7 @@ Zhiyin-Client/log
 Zhiyin-Client/client_activation.spec
 Zhiyin-Client/client_boot.spec
 Zhiyin-Client/client_main.spec
+Zhiyin-Client/client_text.spec
 Zhiyin-Client/__pycache__/
 Zhiyin-Client/build/
 Zhiyin-Client/dist/
